@@ -47,7 +47,7 @@ public class Monster {
         System.out.println("This creature current HP is: " + health + " 🫀");
     }
 
-    public void attack(Monster attackingMonster,Monster defendingMonster) {
+    public static void attack(Monster attackingMonster, Monster defendingMonster) {
         defendingMonster.takeDamage(attackingMonster.getAttackDamage());
         consecutiveAttacks++;
     }

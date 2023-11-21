@@ -1,4 +1,7 @@
-public class Aesthetic extends Battle{
+public class Aesthetic{
+
+    Player player;
+
     public void displayIntro() {
         System.out.println("\n" +
                 "            ▄▄▄▄███▄▄▄▄    ▄██████▄  ███▄▄▄▄      ▄████████     ███        ▄████████    ▄████████                \n" +
@@ -62,5 +65,10 @@ public class Aesthetic extends Battle{
                 "███ ▄█▄ ███   ███    ███   ███    ███   ███ ▀███▄      ███    ███ ███   ███   ███    ███ \n" +
                 " ▀███▀███▀    ██████████   ███    █▀    ███   ▀█▀       ▀██████▀   ▀█   █▀    ██████████ \n" +
                 "                                        ▀                                                \n");
+    }
+    public void displayMonsterDeckLine(Player player){
+        for (Monster monster : player.getDeckMonsters()) {
+            System.out.println(monster.getName() + " | 💛: " + monster.getHealth() + "HP | 💢: " + monster.getAttackDamage() + " DMG");
+        }
     }
 }

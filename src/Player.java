@@ -1,9 +1,11 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 class Player extends Battle {
     private String name;
     private List<Monster> monsters;
+    private List<Monster> deckMonsters;
 
     public Player(String name, List<Monster> monsters) {
         this.name = name;
@@ -26,26 +28,26 @@ class Player extends Battle {
         this.monsters = monsters;
     }
 
-    private Monster createDeck(int choice) {
+    public List<Monster> getDeckMonsters() {
+        return deckMonsters;
+    }
+
+    public void setDeckMonsters(List<Monster> deckMonsters) {
+        this.deckMonsters = deckMonsters;
+    }
+
+    private void createDeck(int choice) {
+
         Scanner deckScanner = new Scanner(System.in);
         System.out.println("Enter the numbers of creatures in your deck: ");
         int deckSize = deckScanner.nextInt();
         for (int i = 0; i < deckSize; i++) {
             switch (choice) {
-                case 1 -> new Werewolf();
-                case 2 -> new Vampire();
-                case 3 -> new Mummy();
-            };
-        }
-        return null;
-    }
-
-
-    public void displayMonsterDeck() {
-        for (Monster monster : this.monsters) {
-            System.out.println(monster.getName() + " | 💛: " + monster.getHealth() + "HP | 💢: " + monster.getAttackDamage() + " DMG");
+                case 1 -> deckMonsters.add(new Werewolf());
+                case 2 -> deckMonsters.add(new Vampire());
+                case 3 -> deckMonsters.add(new Mummy());
+            }
+            ;
         }
     }
-
-
 }
