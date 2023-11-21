@@ -27,20 +27,25 @@ class Player extends Battle {
     }
 
     private Monster createDeck(int choice) {
-        return switch (choice) {
-            case 1 -> new Werewolf();
-            case 2 -> new Vampire();
-            case 3 -> new Mummy();
-            default -> {
-                System.out.println("Invalid choice");
-                yield null;
-            }
-        };
+        Scanner deckScanner = new Scanner(System.in);
+        System.out.println("Enter the numbers of creatures in your deck: ");
+        int deckSize = deckScanner.nextInt();
+        for (int i = 0; i < deckSize; i++) {
+            switch (choice) {
+                case 1 -> new Werewolf();
+                case 2 -> new Vampire();
+                case 3 -> new Mummy();
+            };
+        }
+        return null;
     }
+
 
     public void displayMonsterDeck() {
         for (Monster monster : this.monsters) {
-            System.out.println(monster.getName() + " | 💛:" + monster.getHealth() + "HP | 💢: " + monster.getAttackDamage() + " DMG");
+            System.out.println(monster.getName() + " | 💛: " + monster.getHealth() + "HP | 💢: " + monster.getAttackDamage() + " DMG");
         }
     }
+
+
 }
