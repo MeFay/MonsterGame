@@ -17,7 +17,7 @@ public class Battle {
         int defendingIndex = (int) (Math.random() * defendingPlayer.getDeckMonsters().size() - 1);
 
         if (attackingPlayer.getDeckMonsters().isEmpty() || defendingPlayer.getDeckMonsters().isEmpty()) {
-            System.out.println("Alguem se fodeu");
+            System.out.println("\nThe winner as arisen and the loser has fallen");
         }else{
             attackingMonster = attackingPlayer.getDeckMonsters().get(attackingIndex);
             defendingMonster = defendingPlayer.getDeckMonsters().get(defendingIndex);
@@ -26,22 +26,43 @@ public class Battle {
     }
 
     public void init(Player playerOne, Player playerTwo) {
-        Player attackingPlayer;
-        Player defendingPlayer;
+
         while (gameOn) {
-            attackingPlayer = playerOne;
-            defendingPlayer = playerTwo;
-            round(playerOne, playerTwo);
-            if (!defendingMonster.isMonsterAlive()) {
-                System.out.println("'s " + defendingMonster.getName() + " has been defeated!");
-                defendingPlayer.getDeckMonsters().remove(defendingMonster);
+            try {
+                Thread.sleep(1000);
+            } catch (Exception e) {
             }
-            if(playerOne.getDeckMonsters().isEmpty() || playerTwo.getDeckMonsters().isEmpty()){
+
+
+            if (playerOne.getDeckMonsters().isEmpty() || playerTwo.getDeckMonsters().isEmpty()) {
                 gameOn=false;
-            attackingPlayer = playerTwo;
-            defendingPlayer = playerOne;
-            round(playerTwo, playerOne);
+            }else{
+                round(playerOne, playerTwo);
+                if (!defendingMonster.isMonsterAlive()) {
+                    System.out.println(defendingMonster.getName() + " has been defeated!");
+                    playerTwo.getDeckMonsters().remove(defendingMonster);
+                }
             }
+
+
+            if (playerOne.getDeckMonsters().isEmpty() || playerTwo.getDeckMonsters().isEmpty()) {
+                gameOn = false;
+            } else {
+                round(playerTwo, playerOne);
+                if (!defendingMonster.isMonsterAlive()) {
+                    System.out.println(defendingMonster.getName() + " has been defeated!");
+                    playerOne.getDeckMonsters().remove(defendingMonster);
+                }
+            }
+        }
+        Aesthetic aesthetic = new Aesthetic();
+        if(playerOne.getDeckMonsters().isEmpty()){
+            aesthetic.wonGame();
+            System.out.println(playerTwo.getName()+" WON!");
+        }
+        if(playerTwo.getDeckMonsters().isEmpty()){
+            aesthetic.wonGame();
+            System.out.println(playerOne.getName()+" WON!");
         }
     }
 

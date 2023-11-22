@@ -3,7 +3,7 @@ public class Mummy extends Monster {
     int consecutiveAttack = 0;
 
     public Mummy() {
-        super("Mummy", 50, 10);
+        super("Mummy 🧟‍", 50, 10);
     }
 
     @Override

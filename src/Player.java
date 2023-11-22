@@ -29,11 +29,11 @@ public class Player {
 
     public int createDeck() {
         Scanner deckScanner = new Scanner(System.in);
-        System.out.println(name + " creating deck!");
+        System.out.println(name + " can begin creating the deck!");
         System.out.println("Enter the numbers of creatures in your deck: ");
         int deckSize = deckScanner.nextInt();
         for (int i = 0; i < deckSize; i++) {
-            System.out.println("1-Werewolf\n2-Vampire\n3-Mummy");
+            System.out.println("\n1-Werewolf 🐺 \n2-Vampire 🧛🏻‍♀️\n3-Mummy 🧟");
             int choice = deckScanner.nextInt();
             switch (choice) {
                 case 1 -> deckMonsters.add(new Werewolf());
@@ -41,15 +41,15 @@ public class Player {
                 case 3 -> deckMonsters.add(new Mummy());
             }
         }
-        System.out.println(this.name + " dick created.\n\n");
+        System.out.println(this.name + " has finished creating their deck.\n\n");
         return deckSize;
     }
 
     public void createDeck2(int deckSize) {
-        System.out.println(name + " creating deck!");
+        System.out.println(name + " can begin creating the deck!");
         Scanner deckScanner = new Scanner(System.in);
         for (int i = 0; i < deckSize; i++) {
-            System.out.println("1-Werewolf\n2-Vampire\n3-Mummy");
+            System.out.println("\n1-Werewolf 🐺 \n2-Vampire 🧛🏻‍♀️\n3-Mummy 🧟");
             int choice = deckScanner.nextInt();
             switch (choice) {
                 case 1 -> deckMonsters.add(new Werewolf());
@@ -57,6 +57,6 @@ public class Player {
                 case 3 -> deckMonsters.add(new Mummy());
             }
         }
-        System.out.println(this.name + " dick created.\n\n");
+        System.out.println(this.name + " has finished creating their deck.\n\n");
     }
 }
