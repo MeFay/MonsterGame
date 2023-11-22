@@ -2,13 +2,11 @@ public class Monster {
     private String name;
     private int health;
     private int attackDamage;
-    private int consecutiveAttacks = 0;
 
-    Monster(String name, int health, int damage, int consecutiveAttacks) {
+    Monster(String name, int health, int damage) {
         this.name = name;
         this.health = health;
         this.attackDamage = damage;
-        this.consecutiveAttacks = consecutiveAttacks;
     }
 
     public String getName() {
@@ -35,19 +33,11 @@ public class Monster {
         this.attackDamage = attackDamage;
     }
 
-    public int getConsecutiveAttacks() {
-        return consecutiveAttacks;
-    }
-
-    public void setConsecutiveAttacks(int consecutiveAttacks) {
-        this.consecutiveAttacks = consecutiveAttacks;
-    }
-
     public void displayHealth() {
         System.out.println("This creature current HP is: " + health + " 🫀");
     }
 
-    boolean isMonsterAlive(){
+    boolean isMonsterAlive() {
         return health > 0;
     }
 
@@ -62,6 +52,5 @@ public class Monster {
 
     public void attack(Monster defendingMonster) {
         defendingMonster.takeDamage(this.getAttackDamage());
-        consecutiveAttacks++;
     }
 }
