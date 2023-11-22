@@ -47,13 +47,21 @@ public class Monster {
         System.out.println("This creature current HP is: " + health + " 🫀");
     }
 
-    public static void attack(Monster attackingMonster, Monster defendingMonster) {
-        defendingMonster.takeDamage(attackingMonster.getAttackDamage());
-        consecutiveAttacks++;
+    boolean isMonsterAlive(){
+        return health > 0;
     }
 
     public void takeDamage(int attackDamage) {
-        health = health - attackDamage;
-        System.out.println("Oh no, this creature took 4 hp damage!🩸This creature current HP is: " + health);
+        if (isMonsterAlive()) {
+            health = Math.max(0, health - attackDamage);
+            System.out.println("Oh no, this creature took " + attackDamage + " hp damage!🩸 This creature current HP is: " + health);
+        } else {
+            System.out.println("This creature is already defeated!");
+        }
+    }
+
+    public void attack(Monster defendingMonster) {
+        defendingMonster.takeDamage(this.getAttackDamage());
+        consecutiveAttacks++;
     }
 }
